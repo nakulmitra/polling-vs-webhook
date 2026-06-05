@@ -18,13 +18,13 @@ There are two common approaches to achieve this communication:
 
 Although both approaches solve the same problem, they work in very different ways and have different trade-offs.
 
+[![](https://markdown-videos-api.jorgenkh.no/youtube/wxe3DaEiZcI)](https://youtu.be/wxe3DaEiZcI)
+
 # What is Polling?
 
 Polling is a communication technique in which a client repeatedly sends requests to a server at regular intervals to check whether new information is available.
 
-In simple terms, the client continuously asks:
-
-> "Has anything changed?"
+In simple terms, the client continuously asks "Has anything changed?"
 
 until it receives the expected response.
 
