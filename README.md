@@ -30,11 +30,7 @@ until it receives the expected response.
 
 ## Example
 
-Consider a food delivery application.
-
-A customer places an order and wants to know when the food is ready.
-
-The delivery application can repeatedly call the restaurant service every few seconds:
+Consider a food delivery application. A customer places an order and wants to know when the food is ready. The delivery application can repeatedly call the restaurant service every few seconds:
 
 ```text
 Is the food ready?
@@ -118,9 +114,7 @@ The client is responsible for initiating all communication.
 
 ## 1. Simple Implementation
 
-Polling is easy to implement because it only requires a regular API endpoint.
-
-The client can periodically call the endpoint and check for updates.
+Polling is easy to implement because it only requires a regular API endpoint. The client can periodically call the endpoint and check for updates.
 
 Example:
 
@@ -142,15 +136,11 @@ while(true) {
 
 ## 2. Easy to Debug
 
-Since the client initiates all requests, debugging is straightforward.
-
-Developers can easily inspect requests and responses.
+Since the client initiates all requests, debugging is straightforward. Developers can easily inspect requests and responses.
 
 ## 3. Works with Any System
 
-Polling does not require the server to support callbacks or event notifications.
-
-As long as an API endpoint is available, polling can be implemented.
+Polling does not require the server to support callbacks or event notifications. As long as an API endpoint is available, polling can be implemented.
 
 
 # Disadvantages of Polling
@@ -181,15 +171,11 @@ Most requests provided no new information.
 
 ## 2. Increased Server Load
 
-The server must process every polling request even if no data has changed.
-
-In large-scale systems, this can significantly increase CPU and memory usage.
+The server must process every polling request even if no data has changed. In large-scale systems, this can significantly increase CPU and memory usage.
 
 ## 3. Increased Network Traffic
 
-Polling generates continuous network traffic.
-
-Thousands of clients polling simultaneously can create a large number of unnecessary requests.
+Polling generates continuous network traffic. Thousands of clients polling simultaneously can create a large number of unnecessary requests.
 
 
 ## 4. Delayed Updates
@@ -210,15 +196,11 @@ Next Poll:
 
 The client receives the update 9 seconds later.
 
-
 # What is a Webhook?
 
 A Webhook is an event-driven communication mechanism in which one application automatically sends an HTTP request to another application when a specific event occurs.
 
-Instead of continuously asking for updates, the receiving application provides a callback URL.
-
-When the event happens, the sender calls that URL and delivers the information.
-
+Instead of continuously asking for updates, the receiving application provides a callback URL. When the event happens, the sender calls that URL and delivers the information.
 
 # Example
 
@@ -275,36 +257,27 @@ Communication happens only when an event occurs.
 
 ## 1. Real-Time Notifications
 
-Updates are delivered immediately when an event occurs.
-
-There is no waiting period.
+Updates are delivered immediately when an event occurs. There is no waiting period.
 
 
 ## 2. Reduced Network Traffic
 
-Requests are only sent when something important happens.
-
-No unnecessary status checks are required.
+Requests are only sent when something important happens. No unnecessary status checks are required.
 
 
 ## 3. Lower Server Load
 
-The sender processes fewer requests compared to polling.
-
-This improves overall system efficiency.
+The sender processes fewer requests compared to polling. This improves overall system efficiency.
 
 
 ## 4. Better Scalability
 
-Webhook-based systems generally scale better because they avoid continuous status checking.
-
-This becomes especially important when handling millions of users.
+Webhook-based systems generally scale better because they avoid continuous status checking. This becomes especially important when handling millions of users.
 
 
 ## 5. Event-Driven Architecture
 
 Webhooks fit naturally into modern event-driven systems and microservice architectures.
-
 
 # Disadvantages of Webhooks
 
@@ -324,9 +297,7 @@ public String orderReady() {
 
 ## 2. Retry Handling
 
-What happens if the receiving application is unavailable?
-
-The sender must implement retry logic.
+What happens if the receiving application is unavailable? The sender must implement retry logic.
 
 Example:
 
@@ -337,7 +308,6 @@ Retry After 30 Seconds
 ```
 
 Without retries, events may be lost.
-
 
 ## 3. Security Challenges
 
@@ -352,12 +322,9 @@ Applications often implement:
 
 to verify the authenticity of requests.
 
-
 ## 4. Duplicate Events
 
-The same webhook may be delivered multiple times.
-
-Applications should be designed to process events idempotently.
+The same webhook may be delivered multiple times. Applications should be designed to process events idempotently.
 
 Example:
 
@@ -437,7 +404,6 @@ GitHub sends webhooks when:
 
 A webhook can automatically trigger a build when code is committed.
 
-
 ## Shipping Systems
 
 Delivery providers notify e-commerce applications when:
@@ -445,7 +411,6 @@ Delivery providers notify e-commerce applications when:
 * Order shipped
 * Order delivered
 * Order returned
-
 
 # When Should We Use Polling?
 
@@ -456,7 +421,6 @@ Use Polling when:
 * Real-time updates are not required.
 * The number of clients is small.
 
-
 # When Should We Use Webhooks?
 
 Use Webhooks when:
@@ -465,7 +429,6 @@ Use Webhooks when:
 * High scalability is important.
 * Network efficiency matters.
 * Event-driven communication is preferred.
-
 
 # Conclusion
 
